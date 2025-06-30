@@ -2,15 +2,16 @@ import os
 import requests
 import logging
 
-logger = logging.getLogger(__name__)
+from src.utils.logger import logger
+from src.integration.interfaces import ISMSClient
 
-class InfobipAdapter:
+
+class InfobipClient(ISMSClient):
     def __init__(self):
         base_url = os.getenv("BASE_URL_INFOBIP")
         api_key = os.getenv("API_KEY_INFOBIP")
         if not base_url or not api_key:
             raise ValueError("BASE_URL_INFOBIP and API_KEY_INFOBIP must be set in environment variables")
-        
         self.sms_url = f"{base_url}/sms/3/messages"
         self.headers = {
             "Authorization": f"App {api_key}",

@@ -8,5 +8,5 @@ ERROR: A serious issue that prevents part of the program from functioning.
 CRITICAL: A severe error that may cause the program to terminate.
 """
 
-logger = logging.getLogger()
-logger. setLevel (logging. INFO)
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
